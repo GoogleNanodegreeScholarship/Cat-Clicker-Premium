@@ -9,16 +9,17 @@ import './App.css';
 class App extends Component {
 
   handleClick = (e) => {
-    let images = document.getElementsByClassName('image')
+    let images = document.getElementsByClassName('list')
     let attribute = e.target.getAttribute('id')
     //images is HTMLCollection. to map through the HTMLCollection I have to convert it to array
     //to get attay from HTMLCollection - spread operator is used
     let array = [...images]
+    console.log(array)
     //map method has two arguments image - iterable element of array and i - that counts number of time it loops, so we can use it as index
     array.map((image, i) => {
       //			let index = image.getAttribute('id')
       if( i == attribute ) {
-        return(image.setAttribute('style', 'display: flex;'))
+        return(image.setAttribute('style', 'display: block;'))
       }
       else {
         return(image.setAttribute('style', 'display: none'))
@@ -31,9 +32,6 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <p onClick={this.handleClick}>
-          kdsjflajsdf
-        </p>
         <div>
           <h1 className='App-title'>Click on the button to chose a kitten</h1>
           <button id='0' onClick={this.handleClick}>Wally</button>
@@ -42,13 +40,28 @@ class App extends Component {
           <button id='3' onClick={this.handleClick}>Debby</button>
           <button id='4' onClick={this.handleClick}>Abby</button>
         </div>
-        <div>
-          <img className='image' style={{display: 'none'}} src={kit0} alt="kitten"/>
-          <img className='image' style={{display: 'none'}} src={kit1} alt="kitten"/>
-          <img className='image' style={{display: 'none'}} src={kit2} alt="kitten"/>
-          <img className='image' style={{display: 'none'}} src={kit3} alt="kitten"/>
-          <img className='image' style={{display: 'none'}} src={kit4} alt="kitten"/>
-        </div>
+        <ul>
+          <li className='list' style={{display: 'none'}}>
+            <h2>Wally</h2>
+            <img src={kit0} alt="kitten"/>
+          </li>
+          <li className='list' style={{display: 'none'}}>
+            <h2>Polly</h2>
+            <img src={kit1} alt="kitten"/>
+          </li>
+          <li className='list' style={{display: 'none'}}>
+            <h2>Alice</h2>
+            <img src={kit2} alt="kitten"/>
+          </li>
+          <li className='list' style={{display: 'none'}}>
+            <h2>Dabby</h2>
+            <img src={kit3} alt="kitten"/>
+          </li>
+          <li className='list' style={{display: 'none'}}>
+            <h2>Abby</h2>
+            <img src={kit4} alt="kitten"/>
+          </li>
+        </ul>
       </div>
     );
   }
