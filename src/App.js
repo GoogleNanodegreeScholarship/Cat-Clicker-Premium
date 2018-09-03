@@ -14,7 +14,6 @@ class App extends Component {
     //images is HTMLCollection. to map through the HTMLCollection I have to convert it to array
     //to get attay from HTMLCollection - spread operator is used
     let array = [...images]
-    console.log(array)
     //map method has two arguments image - iterable element of array and i - that counts number of time it loops, so we can use it as index
     array.map((image, i) => {
       //			let index = image.getAttribute('id')
@@ -24,9 +23,13 @@ class App extends Component {
       else {
         return(image.setAttribute('style', 'display: none'))
       }
-      console.log(attribute)
-      console.log(i)
     })
+  }
+
+  onImageClick = (e) => {
+    const clickNumber = e.target.previousSibling
+    const integer = parseInt(clickNumber.innerHTML)
+    clickNumber.innerHTML = (integer + 1)
   }
 
   render() {
@@ -43,23 +46,33 @@ class App extends Component {
         <ul>
           <li className='list' style={{display: 'none'}}>
             <h2>Wally</h2>
-            <img src={kit0} alt="kitten"/>
+            <h4 style={{display: 'flex-root'}}>Clicks:</h4>
+            <p style={{display: 'flex-root'}}>0</p>
+            <img onClick={this.onImageClick} src={kit0} alt="kitten"/>
           </li>
           <li className='list' style={{display: 'none'}}>
             <h2>Polly</h2>
-            <img src={kit1} alt="kitten"/>
+            <h4 style={{display: 'flex-root'}}>Clicks:</h4>
+            <p style={{display: 'flex-root'}}>0</p>
+            <img onClick={this.onImageClick} src={kit1} alt="kitten"/>
           </li>
           <li className='list' style={{display: 'none'}}>
             <h2>Alice</h2>
-            <img src={kit2} alt="kitten"/>
+            <h4 style={{display: 'flex-root'}}>Clicks:</h4>
+            <p style={{display: 'flex-root'}}>0</p>
+            <img onClick={this.onImageClick} src={kit2} alt="kitten"/>
           </li>
           <li className='list' style={{display: 'none'}}>
             <h2>Dabby</h2>
-            <img src={kit3} alt="kitten"/>
+            <h4 style={{display: 'flex-root'}}>Clicks:</h4>
+            <p style={{display: 'flex-root'}}>0</p>
+            <img onClick={this.onImageClick} src={kit3} alt="kitten"/>
           </li>
           <li className='list' style={{display: 'none'}}>
             <h2>Abby</h2>
-            <img src={kit4} alt="kitten"/>
+            <h4 style={{display: 'flex-root'}}>Clicks:</h4>
+            <p style={{display: 'flex-root'}}>0</p>
+            <img onClick={this.onImageClick} src={kit4} alt="kitten"/>
           </li>
         </ul>
       </div>
