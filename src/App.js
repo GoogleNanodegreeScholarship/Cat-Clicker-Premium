@@ -4,6 +4,7 @@ import kit1 from './assets/kit1.jpg';
 import kit2 from './assets/kit2.jpg';
 import kit3 from './assets/kit3.jpg';
 import kit4 from './assets/kit4.jpg';
+import Admin from './Admin.js';
 import './App.css';
 
 class App extends Component {
@@ -32,16 +33,28 @@ class App extends Component {
     clickNumber.innerHTML = (integer + 1)
   }
 
+  inputCatChanger = (cat) => {
+    const names = document.getElementsByClassName('nameButtons')
+    console.log(names)
+    const array = [...names]
+    console.log(array) 
+    array.map(name => {
+      if(name.innerHTML  === cat.value) {
+        name.click()
+      }
+    })
+  }
+
   render() {
     return (
       <div className='App'>
         <div>
           <h1 className='App-title'>Click on the button to chose a kitten</h1>
-          <button id='0' onClick={this.handleClick}>Wally</button>
-          <button id='1' onClick={this.handleClick}>Polly</button>
-          <button id='2' onClick={this.handleClick}>Alice</button>
-          <button id='3' onClick={this.handleClick}>Debby</button>
-          <button id='4' onClick={this.handleClick}>Abby</button>
+          <button className="nameButtons" id='0' onClick={this.handleClick}>Wally</button>
+          <button className="nameButtons" id='1' onClick={this.handleClick}>Polly</button>
+          <button className="nameButtons" id='2' onClick={this.handleClick}>Alice</button>
+          <button className="nameButtons" id='3' onClick={this.handleClick}>Debby</button>
+          <button className="nameButtons" id='4' onClick={this.handleClick}>Abby</button>
         </div>
         <ul>
           <li className='list' style={{display: 'none'}}>
@@ -75,6 +88,8 @@ class App extends Component {
             <img onClick={this.onImageClick} src={kit4} alt="kitten"/>
           </li>
         </ul>
+        <button id="admin" onClick={this.showPanel}>Admin</button>
+        <Admin inputCatChanger={this.inputCatChanger}/>
       </div>
     );
   }
