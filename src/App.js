@@ -35,14 +35,22 @@ class App extends Component {
 
   inputCatChanger = (cat) => {
     const names = document.getElementsByClassName('nameButtons')
-    console.log(names)
     const array = [...names]
-    console.log(array) 
-    array.map(name => {
-      if(name.innerHTML  === cat.value) {
-        name.click()
+    for(let i = 0; i < array.length; i++){
+      if(array[i].innerHTML  === cat.value) {
+        array[i].click()
+        let foo = document.getElementsByTagName('h3')[0]
+        foo.parentNode.removeChild(foo)
+        break;
       }
-    })
+      else if (document.getElementsByTagName('h3').length == 0){
+        let p = document.body
+        let noResult = document.createElement('h3')
+        let text =  document.createTextNode('No results found')
+        noResult.appendChild(text)
+        p.appendChild(noResult)
+      }
+    }
   }
 
   render() {
