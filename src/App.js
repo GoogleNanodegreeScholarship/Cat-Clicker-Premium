@@ -8,6 +8,9 @@ import Admin from './Admin.js';
 import './App.css';
 
 class App extends Component {
+  state = {
+    toggle: true
+  }
 
   handleClick = (e) => {
     let images = document.getElementsByClassName('list')
@@ -50,6 +53,24 @@ class App extends Component {
         noResult.appendChild(text)
         p.appendChild(noResult)
       }
+    }
+  }
+
+  showPanel = () => {
+    let adminPanel = document.getElementsByTagName('section')
+    console.log('click')
+    if(this.state.toggle === false) {
+      this.setState({
+        toggle: true
+      })
+      console.log(adminPanel)
+      adminPanel[0].setAttribute('style', 'display: flex-root')
+    }
+    else{
+      this.setState({
+        toggle: false
+      })
+      adminPanel[0].setAttribute('style', 'display: none')
     }
   }
 
@@ -96,8 +117,8 @@ class App extends Component {
             <img onClick={this.onImageClick} src={kit4} alt="kitten"/>
           </li>
         </ul>
-        <button id="admin" onClick={this.showPanel}>Admin</button>
-        <Admin inputCatChanger={this.inputCatChanger}/>
+        <button id="adminPanel" onClick={this.showPanel} style={{marginBottom: '2%'}}>Admin</button>
+        <Admin inputCatChanger={this.inputCatChanger} />
       </div>
     );
   }
